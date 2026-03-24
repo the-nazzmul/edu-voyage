@@ -1,9 +1,19 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const stats = [
-  { value: "5000+", label: "Student Visa", icon: "passport", pos: "bottom" as const },
-  { value: "75+", label: "Universities", icon: "building", pos: "top" as const },
-  { value: "30+", label: "Countries", icon: "globe", pos: "bottom" as const },
-  { value: "300+", label: "Courses", icon: "cap", pos: "top" as const },
+  { target: 5000, suffix: "+", label: "Student Visa", icon: "passport", pos: "bottom" as const },
+  { target: 75, suffix: "+", label: "Universities", icon: "building", pos: "top" as const },
+  { target: 30, suffix: "+", label: "Countries", icon: "globe", pos: "bottom" as const },
+  { target: 300, suffix: "+", label: "Courses", icon: "cap", pos: "top" as const },
 ];
+
+const COUNT_MS = 2000;
+
+function easeOutCubic(t: number) {
+  return 1 - (1 - t) ** 3;
+}
 
 function Icon({ name }: { name: string }) {
   const common = "h-5 w-5 text-edu-navy";
@@ -41,8 +51,60 @@ function Icon({ name }: { name: string }) {
 }
 
 export function StatsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const startedRef = useRef(false);
+  const rafRef = useRef<number>(0);
+  const [display, setDisplay] = useState(() => stats.map(() => 0));
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const targets = stats.map((s) => s.target);
+
+    const runCount = () => {
+      if (startedRef.current) return;
+      startedRef.current = true;
+
+      if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setDisplay(targets);
+        return;
+      }
+
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min((now - start) / COUNT_MS, 1);
+        const eased = easeOutCubic(t);
+        setDisplay(targets.map((target) => Math.round(target * eased)));
+        if (t < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        } else {
+          setDisplay(targets);
+        }
+      };
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) runCount();
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-white py-10 sm:py-14 md:py-16">
+    <section
+      ref={sectionRef}
+      id="stats"
+      className="relative overflow-hidden bg-white py-10 sm:py-14 md:py-16"
+      aria-label="Statistics"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="relative min-w-0">
           <svg
@@ -59,23 +121,15 @@ export function StatsSection() {
             />
           </svg>
           <div className="relative grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-8 md:gap-8 lg:grid-cols-4 lg:gap-6">
-            <div className="absolute left-2 top-1/2 hidden -translate-y-1/2 lg:block" aria-hidden>
-              <svg width="40" height="40" viewBox="0 0 40 40" className="text-red-500">
-                <path
-                  d="M8 20 L32 18 L28 28 Z"
-                  fill="currentColor"
-                  fillOpacity="0.9"
-                />
-              </svg>
-            </div>
-            {stats.map((s) => (
+            {stats.map((s, i) => (
               <div key={s.label} className="relative flex min-w-0 flex-col items-center text-center">
                 <div className="relative aspect-square w-[5.25rem] max-w-full rounded-full bg-white shadow-[0_0_0_3px_white,0_0_0_6px_#162a6b] sm:w-24 sm:shadow-[0_0_0_4px_white,0_0_0_8px_#162a6b] md:w-28">
                   <div className="flex h-full flex-col items-center justify-center px-1.5 sm:px-2">
                     <span
-                      className={`font-extrabold text-edu-navy ${s.pos === "top" ? "order-2 mt-1 text-xl sm:text-2xl md:text-3xl" : "order-1 text-xl sm:text-2xl md:text-3xl"}`}
+                      className={`font-extrabold tabular-nums text-edu-navy ${s.pos === "top" ? "order-2 mt-1 text-xl sm:text-2xl md:text-3xl" : "order-1 text-xl sm:text-2xl md:text-3xl"}`}
                     >
-                      {s.value}
+                      {display[i]}
+                      {s.suffix}
                     </span>
                     <span
                       className={`max-w-[6.5rem] font-semibold leading-tight text-edu-navy sm:max-w-none ${s.pos === "top" ? "order-1 text-[9px] uppercase tracking-wide sm:text-[10px]" : "order-2 mt-1 text-[9px] uppercase tracking-wide sm:text-[10px]"}`}
