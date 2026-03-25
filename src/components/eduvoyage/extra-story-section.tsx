@@ -20,9 +20,13 @@ export function ExtraStorySection() {
               className="rounded-2xl bg-edu-panel px-5 py-8 shadow-lg ring-1 ring-edu-navy/10 sm:rounded-3xl sm:px-8 sm:py-10 md:[transform:skewX(-6deg)]"
             >
               <div className="md:[transform:skewX(6deg)]">
-                <h3 className="text-xl font-bold text-edu-navy sm:text-2xl">Lorem Ipsum</h3>
+                <h3 className="text-xl font-bold text-edu-navy sm:text-2xl">
+                  Local team, global reach
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-edu-muted">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  We work face-to-face with students and families in Dhaka, so expectations stay
+                  realistic—on costs, timelines, and admission chances—while we chase the best
+                  outcomes abroad together.
                 </p>
               </div>
             </div>

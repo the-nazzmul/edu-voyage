@@ -32,17 +32,19 @@ export function ReviewsSection() {
                     height={56}
                     className="rounded-full object-cover"
                   />
-                  <p className="font-bold text-edu-navy">Student 1</p>
+                  <p className="font-bold text-edu-navy">Ayesha Rahman</p>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-edu-muted">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  The team in Dhaka broke down every visa step and reviewed my SOP until it felt
+                  honest and strong. I got my UK offer without feeling lost in the paperwork.
                 </p>
                 <p className="mt-2 text-sm text-amber-400">★★★★★</p>
               </article>
               <article className="relative z-0 -mt-2 ml-0 rounded-2xl bg-white p-5 shadow-lg ring-1 ring-edu-navy/10 sm:-mt-4 sm:ml-6 sm:rounded-3xl lg:ml-12">
-                <p className="font-bold text-edu-navy">Student 2</p>
+                <p className="font-bold text-edu-navy">Fahad Khan</p>
                 <p className="mt-2 text-sm leading-relaxed text-edu-muted">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  I wasn&apos;t sure which country fit my budget. They compared options clearly and
+                  helped me shortlist universities that actually matched my profile.
                 </p>
                 <p className="mt-2 text-sm text-amber-400">★★★★★</p>
               </article>
@@ -57,9 +59,10 @@ export function ReviewsSection() {
                   className="rounded-full object-cover"
                 />
                 <div className="flex-1">
-                  <p className="font-bold text-edu-navy">Student 3</p>
+                  <p className="font-bold text-edu-navy">Nusrat Jahan</p>
                   <p className="mt-3 text-sm leading-relaxed text-edu-muted">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    From document checks to the embassy interview, someone was always reachable.
+                    Leaving for Canada felt prepared, not rushed.
                   </p>
                   <p className="mt-3 text-sm text-amber-400">★★★★★</p>
                 </div>

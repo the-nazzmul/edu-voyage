@@ -3,9 +3,9 @@
 import { useState } from "react";
 
 const items = [
-  "Lorem Ipsum is simply dummy text of the printing",
-  "Lorem Ipsum is simply dummy text of the printing",
-  "Lorem Ipsum is simply dummy text of the printing",
+  "What documents do I need to apply for a student visa from Bangladesh?",
+  "How long does it usually take from shortlist to enrolment abroad?",
+  "Is the first consultation free, and what happens in that session?",
 ];
 
 export function FaqSection() {
@@ -23,7 +23,8 @@ export function FaqSection() {
         <div className="mt-10 grid gap-10 sm:mt-14 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="min-w-0">
             <p className="text-base font-medium text-edu-navy sm:text-lg">
-              Still you have any questions to know? feel free to ask our experts here.
+              Still have questions? Ask our team in Dhaka—we&apos;ll reply with clear, practical
+              guidance for your situation.
             </p>
             <div className="relative mt-8">
               <svg
@@ -45,7 +46,7 @@ export function FaqSection() {
               <textarea
                 id="faq-free-text"
                 rows={5}
-                placeholder="Free to ask"
+                placeholder="Ask anything about destinations, applications, or visas…"
                 className="min-h-[8rem] w-full resize-y rounded-3xl border-0 bg-edu-panel px-5 py-4 text-base text-edu-navy shadow-inner ring-1 ring-edu-navy/10 placeholder:text-edu-label focus:outline-none focus:ring-2 focus:ring-edu-navy sm:text-sm"
               />
             </div>

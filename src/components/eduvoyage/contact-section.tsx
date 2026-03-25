@@ -18,7 +18,9 @@ export function ContactSection() {
             <div className="min-w-0">
               <h3 className="text-xl font-bold text-edu-navy sm:text-2xl">Get In Touch</h3>
               <p className="mt-3 text-sm leading-relaxed text-edu-muted">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Visit our office in Dhaka or reach out by phone or email. Tell us your goals and
+                we&apos;ll help you plan your next step—whether it&apos;s choosing a country,
+                shortlisting universities, or starting your visa paperwork.
               </p>
               <ul className="mt-6 space-y-4 text-sm font-semibold text-edu-navy sm:mt-8 sm:space-y-5">
                 <li className="flex min-w-0 items-start gap-3">
@@ -28,7 +30,7 @@ export function ContactSection() {
                       <circle cx="12" cy="10" r="2.5" strokeWidth="1.6" />
                     </svg>
                   </span>
-                  Kakkanad, Kochi
+                  Dhaka, Bangladesh
                 </li>
                 <li className="flex min-w-0 items-start gap-3">
                   <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-edu-navy text-white">
@@ -39,7 +41,7 @@ export function ContactSection() {
                       />
                     </svg>
                   </span>
-                  +91 987456123
+                  +880 1712-345678
                 </li>
                 <li className="flex min-w-0 items-start gap-3 break-all">
                   <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-edu-navy text-white">
@@ -48,13 +50,13 @@ export function ContactSection() {
                       <path d="m3 7 9 6 9-6" strokeWidth="1.6" />
                     </svg>
                   </span>
-                  eduvoyage@gmail.com
+                  hello@eduvoyage.com
                 </li>
               </ul>
               <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-edu-navy/10">
                 <Image
-                  src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80"
-                  alt="Map of Kochi area"
+                  src="https://images.unsplash.com/photo-1626285861696-9f73bf068148?auto=format&fit=crop&w=1200&q=80"
+                  alt="Dhaka city"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -9,8 +10,7 @@ const cols = [
   {
     title: null,
     links: null as string[] | null,
-    text:
-      "Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
+    text: "EduVoyage is a Dhaka-based study abroad consultancy helping Bangladeshi students choose universities, prepare applications, and secure visas—with honest advice and support from first chat to departure.",
   },
   {
     title: null,
@@ -37,7 +37,24 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl min-w-0 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="text-center sm:text-left">
-            <p className="text-sm leading-relaxed text-edu-navy/90">{cols[0].text}</p>
+            <a
+              href="#"
+              className="mb-5 inline-flex items-center justify-center gap-2.5 sm:justify-start"
+            >
+              <Image
+                src="/evuvoyage.png"
+                alt="EduVoyage"
+                width={48}
+                height={48}
+                className="h-12 w-12 shrink-0 object-contain"
+              />
+              <span className="text-lg font-bold tracking-tight text-edu-navy">
+                EduVoyage
+              </span>
+            </a>
+            <p className="text-sm leading-relaxed text-edu-navy/90">
+              {cols[0].text}
+            </p>
             <div className="mt-6 flex justify-center gap-3 sm:justify-start">
               <a
                 href="https://instagram.com"
@@ -87,9 +104,9 @@ export function SiteFooter() {
             </nav>
           ))}
           <div className="text-center text-sm font-semibold leading-relaxed sm:text-left">
-            <p>Kakkanad , Kochi</p>
-            <p className="mt-4">+91 9876543210</p>
-            <p className="mt-4">abcd@gmail.com</p>
+            <p>Dhaka, Bangladesh</p>
+            <p className="mt-4">+880 1712-345678</p>
+            <p className="mt-4">hello@eduvoyage.com</p>
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-4 border-t border-edu-navy/15 pt-8 text-center text-xs font-medium text-edu-navy/90 sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:text-left">

@@ -5,34 +5,70 @@ import { useState } from "react";
 
 const tabs = ["Countries", "Universities", "Courses"] as const;
 
-const universities = [
+type University = {
+  name: string;
+  src: string;
+  imageAlt: string;
+  text: string;
+};
+
+const universities: University[] = [
   {
     name: "Harvard",
-    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
-    text: "Ipsum has been the industry standard dummy text ever since the 1500s.",
+    src: "/assets/study-in/harvard.jpg",
+    imageAlt: "Harvard University auditorium and audience",
+    text: "Top-tier research and liberal arts for law, business, and STEM.",
   },
   {
     name: "MIT",
-    src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
-    text: "Ipsum has been the industry standard dummy text ever since the 1500s.",
+    src: "/assets/study-in/mit.jpg",
+    imageAlt: "MIT campus interior with city view",
+    text: "Elite engineering and CS—we help you stand out for competitive STEM intakes.",
   },
   {
     name: "Stanford",
-    src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80",
-    text: "Ipsum has been the industry standard dummy text ever since the 1500s.",
+    src: "/assets/study-in/stanford.jpg",
+    imageAlt: "Stanford graduates celebrating at commencement",
+    text: "Silicon Valley links and flexible programs for tech, startups, and research.",
   },
   {
     name: "Columbia",
-    src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
-    text: "Ipsum has been the industry standard dummy text ever since the 1500s.",
+    src: "/assets/study-in/columbia.jpg",
+    imageAlt: "Columbia University classroom lecture",
+    text: "Ivy League in NYC—strong in journalism, finance, and global internships.",
   },
 ];
+
+function StudyUniversityCard({ name, src, imageAlt, text }: University) {
+  return (
+    <article className="relative isolate overflow-visible pt-8 sm:pt-10">
+      <div className="relative min-h-[7.75rem] overflow-visible rounded-2xl bg-edu-primary py-4 pl-[10rem] pr-4 shadow-md ring-1 ring-edu-navy/10 sm:min-h-[8.25rem] sm:rounded-[1.75rem] sm:py-5 sm:pl-[11rem] sm:pr-6 md:pl-[11.75rem]">
+        <h3 className="text-lg font-bold text-edu-navy sm:text-xl">{name}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-edu-muted">{text}</p>
+        <div className="pointer-events-none absolute bottom-0 left-0 z-10 aspect-square w-[8.75rem] overflow-hidden rounded-2xl shadow-lg ring-1 ring-edu-navy/15 sm:w-[9.5rem] md:w-[10rem]">
+          <div className="relative h-full w-full">
+            <Image
+              src={src}
+              alt={imageAlt}
+              fill
+              className="object-cover object-bottom"
+              sizes="(max-width: 640px) 140px, (max-width: 768px) 152px, 160px"
+            />
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export function StudyInSection() {
   const [active, setActive] = useState<(typeof tabs)[number]>("Universities");
 
   return (
-    <section id="study-in" className="scroll-mt-20 bg-white py-12 sm:scroll-mt-24 sm:py-16 md:py-24">
+    <section
+      id="study-in"
+      className="scroll-mt-20 overflow-x-clip bg-white py-12 sm:scroll-mt-24 sm:py-16 md:py-24"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm italic text-edu-label">Study In</p>
@@ -59,26 +95,9 @@ export function StudyInSection() {
         <p className="sr-only" aria-live="polite">
           Showing {active}
         </p>
-        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+        <div className="mt-10 grid min-w-0 gap-x-5 gap-y-1 sm:mt-12 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-2">
           {universities.map((u) => (
-            <article
-              key={u.name}
-              className="relative flex min-w-0 flex-col overflow-hidden rounded-2xl bg-edu-panel shadow-md ring-1 ring-edu-navy/10 sm:flex-row sm:rounded-[2rem]"
-            >
-              <div className="relative aspect-[16/10] w-full shrink-0 sm:aspect-auto sm:w-2/5 sm:min-h-[200px]">
-                <Image
-                  src={u.src}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 200px"
-                />
-              </div>
-              <div className="flex min-w-0 flex-1 flex-col justify-center p-4 sm:p-6">
-                <h3 className="text-lg font-bold text-edu-navy sm:text-xl">{u.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-edu-muted">{u.text}</p>
-              </div>
-            </article>
+            <StudyUniversityCard key={u.name} {...u} />
           ))}
         </div>
         <div className="mt-10 flex justify-center sm:mt-12">

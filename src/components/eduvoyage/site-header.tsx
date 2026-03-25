@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type NavLink = { href: string; label: string; active?: boolean };
@@ -15,20 +16,15 @@ const links: NavLink[] = [
 
 function Logo() {
   return (
-    <a href="#" className="flex items-center gap-2 text-edu-navy">
-      <span className="grid h-10 w-10 place-items-center rounded-full bg-white/80 shadow-sm ring-1 ring-edu-navy/10">
-        <svg
-          viewBox="0 0 24 24"
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          aria-hidden
-        >
-          <path d="M12 3 4 7v2c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V7l-8-4Z" />
-          <path d="M8 11h8M9 15h6" />
-        </svg>
-      </span>
+    <a href="#" className="flex items-center gap-2.5 text-edu-navy">
+      <Image
+        src="/evuvoyage.png"
+        alt="EduVoyage"
+        width={40}
+        height={40}
+        className="h-10 w-10 shrink-0 object-contain"
+        priority
+      />
       <span className="min-w-0 truncate text-base font-bold tracking-tight sm:text-lg">
         EduVoyage
       </span>
@@ -102,11 +98,24 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
           >
             <span className="sr-only">Menu</span>
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <svg
+              className="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
               {open ? (
-                <path d="M6 6 18 18M18 6 6 18" strokeWidth="2" strokeLinecap="round" />
+                <path
+                  d="M6 6 18 18M18 6 6 18"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               ) : (
-                <path d="M4 7h16M4 12h16M4 17h16" strokeWidth="2" strokeLinecap="round" />
+                <path
+                  d="M4 7h16M4 12h16M4 17h16"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               )}
             </svg>
           </button>

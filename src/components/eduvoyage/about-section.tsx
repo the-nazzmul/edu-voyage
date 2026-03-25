@@ -95,7 +95,7 @@ export function AboutSection() {
               </h2>
               <div className="mt-6 space-y-4 text-edu-muted">
                 <p className="text-base font-bold text-edu-navy sm:text-lg">
-                  Best Study Abroad Consultants in Kochi, Kerala!
+                  Trusted study abroad consultants in Dhaka, Bangladesh
                 </p>
                 <p className="text-sm leading-relaxed sm:text-base">
                   EduVoyage partners with leading universities worldwide to help

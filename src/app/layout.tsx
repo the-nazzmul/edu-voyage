@@ -13,7 +13,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "EduVoyage — Study Abroad Consultancy",
   description:
-    "Global leaders in international education services. Study abroad guidance, visas, and university admissions.",
+    "Study abroad consultancy in Dhaka, Bangladesh—university guidance, applications, and visa support for students going overseas.",
 };
 
 export const viewport: Viewport = {

@@ -34,9 +34,13 @@ export function SuccessStoriesSection() {
                   className="w-full rounded-2xl bg-edu-panel px-5 py-6 shadow-lg ring-1 ring-edu-navy/10 sm:rounded-3xl sm:px-6 sm:py-8 md:[transform:skewX(-4deg)]"
                 >
                   <div className="md:[transform:skewX(4deg)]">
-                    <h3 className="text-lg font-bold text-edu-navy sm:text-xl">Lorem Ipsum</h3>
+                    <h3 className="text-lg font-bold text-edu-navy sm:text-xl">
+                      From Dhaka to Melbourne
+                    </h3>
                     <p className="mt-3 text-sm leading-relaxed text-edu-muted">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      &ldquo;EduVoyage helped me align my grades and IELTS with courses that fit my
+                      career plan. The application timeline was clear and I never missed a
+                      deadline.&rdquo; — Rafi, postgraduate offer in Australia
                     </p>
                   </div>
                 </div>
