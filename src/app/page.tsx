@@ -1,6 +1,5 @@
 import { AboutSection } from "@/components/eduvoyage/about-section";
 import { ContactSection } from "@/components/eduvoyage/contact-section";
-import { ExtraStorySection } from "@/components/eduvoyage/extra-story-section";
 import { FaqSection } from "@/components/eduvoyage/faq-section";
 import { FeaturesSection } from "@/components/eduvoyage/features-section";
 import { Hero } from "@/components/eduvoyage/hero";
@@ -21,7 +20,6 @@ export default function Home() {
       <StudyInSection />
       <ReviewsSection />
       <SuccessStoriesSection />
-      <ExtraStorySection />
       <FaqSection />
       <ContactSection />
     </div>
