@@ -1,97 +1,275 @@
 import Image from "next/image";
 
-const blurbs = [
+/** Student leaf: sharp TL + BR, round TR + BL (default) */
+const leafCornersStudent =
+  "rounded-tl-none rounded-br-none rounded-tr-[2rem] rounded-bl-[2rem] sm:rounded-tr-[2.75rem] sm:rounded-bl-[2.75rem]";
+
+/** Horizontally mirrored — sharp TR + BL, round TL + BR (step 3) */
+const leafCornersStudentMirrored =
+  "rounded-tr-none rounded-bl-none rounded-tl-[2rem] rounded-br-[2rem] sm:rounded-tl-[2.75rem] sm:rounded-br-[2.75rem]";
+
+/** Agency card keeps the default leaf direction */
+const leafCorners =
+  "rounded-tl-none rounded-br-none rounded-tr-[2rem] rounded-bl-[2rem] sm:rounded-tr-[2.75rem] sm:rounded-bl-[2.75rem]";
+
+type ProcessStep = {
+  step: number;
+  title: string;
+  description: string;
+  kind: "student" | "agency";
+  imageSrc?: string;
+  imageAlt: string;
+  /** Desktop: false = visual left / text right; true = text left / visual right */
+  visualRight: boolean;
+};
+
+const steps: ProcessStep[] = [
   {
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries.",
+    step: 1,
+    title: "Free consultation",
+    description:
+      "Discuss goals, budget, and destination with counsellors who listen first—then map a path that fits your studies and timeline.",
+    kind: "student",
+    imageSrc: "/assets/process/process-section-student-1.png",
+    imageAlt: "Student planning their study abroad journey",
+    visualRight: false,
   },
   {
-    text: "Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley.",
+    step: 2,
+    title: "Course & university fit",
+    description:
+      "Shortlist programs and institutions aligned with your profile, interests, and entry requirements—so every application has a clear purpose.",
+    kind: "agency",
+    imageSrc: "/assets/process/process-agency.png",
+    imageAlt: "EduVoyage team supporting your course and university choices",
+    visualRight: true,
   },
   {
-    text: "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.",
+    step: 3,
+    title: "Applications & visa",
+    description:
+      "Guided paperwork, submissions, and visa support from people who have walked hundreds of students through the same steps.",
+    kind: "student",
+    imageSrc: "/assets/process/process-section-student-2.png",
+    imageAlt: "Student preparing study abroad applications",
+    visualRight: false,
   },
   {
-    text: "More recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    step: 4,
+    title: "Pre-departure",
+    description:
+      "Orientation, travel tips, and practical help before you fly—so you land ready, not overwhelmed.",
+    kind: "agency",
+    imageSrc: "/assets/process/process-discussion.png",
+    imageAlt: "Students at pre-departure briefing and orientation",
+    visualRight: true,
   },
 ];
 
-export function ProcessSection() {
+const stepOneCallout =
+  "Start with a conversation—no pressure, no obligation.";
+
+function ProcessStepText({
+  step,
+  title,
+  description,
+  alignEnd,
+}: {
+  step: number;
+  title: string;
+  description: string;
+  alignEnd: boolean;
+}) {
   return (
-    <section className="relative overflow-hidden bg-white py-12 sm:py-16 md:py-24">
-      <div className="mx-auto max-w-6xl min-w-0 px-4 sm:px-6 lg:px-8">
-        <div className="relative grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start">
-          <div className="min-w-0 space-y-8 sm:space-y-10">
-            <div className="relative mx-auto max-w-md lg:mx-0">
-              <div
-                className="relative aspect-[4/5] overflow-hidden rounded-2xl sm:rounded-none"
-                style={{
-                  clipPath:
-                    "polygon(10% 0%, 100% 0%, 100% 85%, 75% 100%, 0% 90%, 0% 20%)",
-                }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 90vw, 400px"
-                />
-              </div>
-              <div className="relative z-10 mt-4 rounded-2xl bg-edu-panel px-4 py-3 text-xs font-medium leading-relaxed text-edu-muted shadow-md ring-1 ring-edu-navy/10 sm:absolute sm:bottom-8 sm:right-0 sm:mt-0 sm:max-w-[min(100%,17rem)] sm:rounded-3xl md:-right-4 lg:max-w-[18rem]">
-                {blurbs[0].text}
-              </div>
-            </div>
-            <p className="max-w-lg text-sm leading-relaxed text-edu-muted lg:pl-8">
-              {blurbs[2].text}
-            </p>
-          </div>
-          <div className="min-w-0 space-y-8 sm:space-y-10 lg:pt-12">
-            <p className="max-w-lg text-sm leading-relaxed text-edu-muted">
-              {blurbs[1].text}
-            </p>
-            <div className="relative mx-auto max-w-md lg:ml-auto lg:mr-0">
-              <div
-                className="relative aspect-[5/4] overflow-hidden rounded-[2rem] bg-edu-panel"
-                style={{
-                  clipPath: "ellipse(90% 70% at 60% 40%)",
-                }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 90vw, 400px"
-                />
-              </div>
-            </div>
-            <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:items-center">
-              <div className="relative aspect-[4/3] min-h-[12rem] overflow-hidden rounded-2xl bg-edu-panel sm:rounded-3xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
-                  alt="Team collaboration illustration"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 400px"
-                />
-              </div>
-              <p className="text-sm leading-relaxed text-edu-muted">{blurbs[3].text}</p>
-            </div>
+    <div className={alignEnd ? "lg:text-right" : ""}>
+      <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-edu-navy/50">
+        Step {step}
+      </p>
+      <h3 className="font-display text-xl font-semibold tracking-tight text-edu-navy sm:text-2xl">
+        {title}
+      </h3>
+      <p
+        className={`mt-3 max-w-md text-sm leading-relaxed text-edu-muted sm:max-w-lg ${alignEnd ? "lg:ml-auto" : ""}`}
+      >
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function ProcessStudentFigure({
+  src,
+  alt,
+  leafMirrored = false,
+}: {
+  src: string;
+  alt: string;
+  leafMirrored?: boolean;
+}) {
+  const corners = leafMirrored ? leafCornersStudentMirrored : leafCornersStudent;
+  return (
+    <div className="relative mx-auto w-full max-w-[280px] overflow-visible sm:max-w-[320px]">
+      {/* Taller stage: figure reads as leaning through a smaller leaf “opening” */}
+      <div className="relative mx-auto h-[min(19.5rem,82vw)] w-full overflow-visible sm:h-[23rem]">
+        <div
+          aria-hidden
+          className={`absolute bottom-0 left-1/2 z-0 h-[46%] w-[min(58%,11.5rem)] max-w-[11rem] -translate-x-1/2 bg-gradient-to-br from-edu-primary via-edu-panel to-edu-panel-deep ${corners} shadow-inner shadow-edu-navy/10 sm:h-[42%] sm:w-[min(56%,12.5rem)] sm:max-w-[12rem]`}
+        />
+        {/* origin-bottom + scale only: keeps feet flush with leaf bottom (no translateY gap) */}
+        <div className="absolute inset-x-0 -top-3 bottom-0 z-10 overflow-visible sm:-top-4">
+          <div className="relative h-full w-full">
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes="(max-width: 640px) 90vw, 320px"
+              className="object-contain object-bottom origin-bottom scale-[1.15] sm:scale-[1.18]"
+            />
           </div>
         </div>
-        <svg
-          className="pointer-events-none absolute left-1/2 top-24 hidden h-[70%] w-32 -translate-x-1/2 text-edu-sky lg:block"
-          viewBox="0 0 40 400"
-          aria-hidden
-        >
-          <path
-            d="M20 0 Q 40 100 20 200 T 20 400"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeDasharray="6 8"
-          />
-        </svg>
+      </div>
+    </div>
+  );
+}
+
+function ProcessAgencyFigure({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div
+      className={`relative mx-auto w-full max-w-sm overflow-hidden bg-gradient-to-b from-edu-panel/80 to-edu-panel-deep/50 p-6 shadow-sm ring-1 ring-edu-navy/10 sm:p-8 ${leafCorners}`}
+    >
+      <div className="relative aspect-[5/4] w-full overflow-hidden">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 640px) 90vw, 384px"
+          className="object-contain object-center origin-center scale-[1.1] sm:scale-[1.14]"
+        />
+      </div>
+    </div>
+  );
+}
+
+function ProcessConnector() {
+  return (
+    <svg
+      className="pointer-events-none absolute left-1/2 top-[8%] z-0 hidden h-[84%] w-10 -translate-x-1/2 text-edu-primary/45 lg:block"
+      viewBox="0 0 40 520"
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <circle cx="20" cy="12" r="4" fill="currentColor" />
+      <path
+        d="M20 22 L20 118"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeDasharray="5 7"
+      />
+      <circle cx="20" cy="132" r="4" fill="currentColor" />
+      <path
+        d="M20 142 L20 258"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeDasharray="5 7"
+      />
+      <circle cx="20" cy="272" r="4" fill="currentColor" />
+      <path
+        d="M20 282 L20 398"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeDasharray="5 7"
+      />
+      <circle cx="20" cy="412" r="4" fill="currentColor" />
+      <path
+        d="M20 422 L20 488"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeDasharray="5 7"
+      />
+      <path d="M14 498 L26 498 L20 508 Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function StepVisual({
+  step,
+}: {
+  step: ProcessStep;
+}) {
+  if (step.kind === "student" && step.imageSrc) {
+    return (
+      <ProcessStudentFigure
+        src={step.imageSrc}
+        alt={step.imageAlt}
+        leafMirrored={step.step === 3}
+      />
+    );
+  }
+  if (step.kind === "agency" && step.imageSrc) {
+    return <ProcessAgencyFigure src={step.imageSrc} alt={step.imageAlt} />;
+  }
+  return null;
+}
+
+export function ProcessSection() {
+  return (
+    <section
+      id="process"
+      className="relative scroll-mt-20 overflow-x-clip bg-white py-12 sm:scroll-mt-24 sm:py-16 md:py-24"
+    >
+      <div className="relative mx-auto max-w-6xl min-w-0 px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <p className="text-sm italic text-edu-label">Process</p>
+          <h2 className="mt-2 text-balance text-2xl font-extrabold text-edu-navy sm:text-3xl md:text-4xl">
+            How we work with you
+          </h2>
+        </div>
+
+        <div className="relative mt-12 space-y-12 sm:mt-14 sm:space-y-14 lg:mt-16 lg:space-y-20">
+          <ProcessConnector />
+
+          {steps.map((s, index) => (
+            <article key={s.step} className="relative z-10">
+              <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-x-14 xl:gap-x-20">
+                <div
+                  className={`relative min-w-0 ${s.visualRight ? "lg:order-2" : ""}`}
+                >
+                  {s.step === 1 ? (
+                    <div className="relative">
+                      <StepVisual step={s} />
+                      <div className="relative z-20 mx-auto mt-2 max-w-sm rounded-2xl bg-edu-panel px-4 py-3 text-center text-xs font-medium leading-relaxed text-edu-navy shadow-md ring-1 ring-edu-navy/10 sm:absolute sm:-bottom-2 sm:right-0 sm:mt-0 sm:max-w-[min(100%,15rem)] sm:rounded-3xl sm:text-left md:-right-2 lg:bottom-4">
+                        {stepOneCallout}
+                      </div>
+                    </div>
+                  ) : (
+                    <StepVisual step={s} />
+                  )}
+                </div>
+                <div
+                  className={`min-w-0 ${s.visualRight ? "lg:order-1" : ""}`}
+                >
+                  <ProcessStepText
+                    step={s.step}
+                    title={s.title}
+                    description={s.description}
+                    alignEnd={!s.visualRight}
+                  />
+                </div>
+              </div>
+
+              {index < steps.length - 1 ? (
+                <div
+                  className="mx-auto mt-10 h-px max-w-xs border-0 border-b border-dashed border-edu-primary/30 bg-transparent lg:hidden"
+                  aria-hidden
+                />
+              ) : null}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
