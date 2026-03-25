@@ -66,8 +66,7 @@ const steps: ProcessStep[] = [
   },
 ];
 
-const stepOneCallout =
-  "Start with a conversation—no pressure, no obligation.";
+const stepOneCallout = "Start with a conversation—no pressure, no obligation.";
 
 function ProcessStepText({
   step,
@@ -106,7 +105,9 @@ function ProcessStudentFigure({
   alt: string;
   leafMirrored?: boolean;
 }) {
-  const corners = leafMirrored ? leafCornersStudentMirrored : leafCornersStudent;
+  const corners = leafMirrored
+    ? leafCornersStudentMirrored
+    : leafCornersStudent;
   return (
     <div className="relative mx-auto w-full max-w-[280px] overflow-visible sm:max-w-[320px]">
       {/* Taller stage: figure reads as leaning through a smaller leaf “opening” */}
@@ -153,53 +154,49 @@ function ProcessAgencyFigure({ src, alt }: { src: string; alt: string }) {
 function ProcessConnector() {
   return (
     <svg
-      className="pointer-events-none absolute left-1/2 top-[8%] z-0 hidden h-[84%] w-10 -translate-x-1/2 text-edu-primary/45 lg:block"
-      viewBox="0 0 40 520"
+      className="pointer-events-none absolute left-1/2 top-[5%] z-0 hidden h-[90%] w-10 -translate-x-1/2 text-edu-primary/45 lg:block"
+      viewBox="0 0 40 380"
       preserveAspectRatio="none"
       aria-hidden
     >
-      <circle cx="20" cy="12" r="4" fill="currentColor" />
+      <circle cx="20" cy="14" r="4" fill="currentColor" />
       <path
-        d="M20 22 L20 118"
+        d="M20 24 L20 86"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.75"
-        strokeDasharray="5 7"
+        strokeDasharray="5 6"
       />
-      <circle cx="20" cy="132" r="4" fill="currentColor" />
+      <circle cx="20" cy="96" r="4" fill="currentColor" />
       <path
-        d="M20 142 L20 258"
+        d="M20 106 L20 168"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.75"
-        strokeDasharray="5 7"
+        strokeDasharray="5 6"
       />
-      <circle cx="20" cy="272" r="4" fill="currentColor" />
+      <circle cx="20" cy="178" r="4" fill="currentColor" />
       <path
-        d="M20 282 L20 398"
+        d="M20 188 L20 250"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.75"
-        strokeDasharray="5 7"
+        strokeDasharray="5 6"
       />
-      <circle cx="20" cy="412" r="4" fill="currentColor" />
+      <circle cx="20" cy="260" r="4" fill="currentColor" />
       <path
-        d="M20 422 L20 488"
+        d="M20 270 L20 332"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.75"
-        strokeDasharray="5 7"
+        strokeDasharray="5 6"
       />
-      <path d="M14 498 L26 498 L20 508 Z" fill="currentColor" />
+      <path d="M14 342 L26 342 L20 352 Z" fill="currentColor" />
     </svg>
   );
 }
 
-function StepVisual({
-  step,
-}: {
-  step: ProcessStep;
-}) {
+function StepVisual({ step }: { step: ProcessStep }) {
   if (step.kind === "student" && step.imageSrc) {
     return (
       <ProcessStudentFigure
@@ -229,12 +226,12 @@ export function ProcessSection() {
           </h2>
         </div>
 
-        <div className="relative mt-12 space-y-12 sm:mt-14 sm:space-y-14 lg:mt-16 lg:space-y-20">
+        <div className="relative mt-10 space-y-7 sm:mt-12 sm:space-y-8 lg:mt-14 lg:space-y-10">
           <ProcessConnector />
 
           {steps.map((s, index) => (
             <article key={s.step} className="relative z-10">
-              <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-x-14 xl:gap-x-20">
+              <div className="grid gap-6 lg:grid-cols-2 lg:items-center lg:gap-x-10 xl:gap-x-14">
                 <div
                   className={`relative min-w-0 ${s.visualRight ? "lg:order-2" : ""}`}
                 >
@@ -249,9 +246,7 @@ export function ProcessSection() {
                     <StepVisual step={s} />
                   )}
                 </div>
-                <div
-                  className={`min-w-0 ${s.visualRight ? "lg:order-1" : ""}`}
-                >
+                <div className={`min-w-0 ${s.visualRight ? "lg:order-1" : ""}`}>
                   <ProcessStepText
                     step={s.step}
                     title={s.title}
@@ -263,7 +258,7 @@ export function ProcessSection() {
 
               {index < steps.length - 1 ? (
                 <div
-                  className="mx-auto mt-10 h-px max-w-xs border-0 border-b border-dashed border-edu-primary/30 bg-transparent lg:hidden"
+                  className="mx-auto mt-6 h-px max-w-xs border-0 border-b border-dashed border-edu-primary/30 bg-transparent lg:hidden"
                   aria-hidden
                 />
               ) : null}
