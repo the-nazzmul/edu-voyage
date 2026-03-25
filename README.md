@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EduVoyage
 
-## Getting Started
+Marketing site for **EduVoyage**, a Dhaka-based study abroad consultancy. The experience is a single scroll-driven page: hero, story and stats, services, process timeline, destinations, social proof, FAQ, and contact—with a fixed navbar, smooth in-page navigation, and responsive layout.
 
-First, run the development server:
+**Live site:** [edu-voyage-bd.vercel.app](https://edu-voyage-bd.vercel.app/)
+
+![Hero preview of the EduVoyage website](public/edu-voyage-screenshot.png)
+
+## Highlights
+
+- **Next.js (App Router)** with React and TypeScript  
+- **Tailwind CSS v4** for styling and design tokens  
+- **SEO**: metadata (Open Graph & Twitter cards), `meta-image.jpg` for social previews, `robots.txt`, `sitemap.xml`, and JSON-LD (`EducationalOrganization`)  
+- **Accessible, mobile-first** navigation with scroll-based active states  
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Environment
 
-To learn more about Next.js, take a look at the following resources:
+For correct absolute URLs in production (Open Graph, canonical links, sitemap, and structured data), set:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Purpose |
+|----------|---------|
+| `NEXT_PUBLIC_SITE_URL` | Full origin of the deployed site (no trailing slash), e.g. `https://edu-voyage-bd.vercel.app` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+On [Vercel](https://vercel.com), `VERCEL_URL` is used automatically when this variable is unset; defining `NEXT_PUBLIC_SITE_URL` to your canonical URL (such as the [production deployment](https://edu-voyage-bd.vercel.app/)) is still recommended for stable Open Graph and sitemap links.
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm start` | Start production server |
+| `npm run lint` | ESLint |
+| `npm run stitch-reference` | Helper script for design reference assets |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project layout
+
+```
+src/
+  app/           # App Router: layout, page, globals, robots, sitemap
+  components/
+    eduvoyage/   # Section components, header, footer, icons
+  lib/           # Shared utilities (e.g. site URL for SEO)
+public/          # Static assets: logos, hero imagery, meta-image.jpg
+```
+
+## Assets
+
+- **`public/meta-image.jpg`** — Default social sharing image (also referenced in metadata).  
+- **`public/edu-voyage-screenshot.png`** — README hero preview.  
+
+Replace copy, contact details, and map embed coordinates in the relevant section components to match your live business information.
+
+## License
+
+Private / all rights reserved unless otherwise specified by the project owner.
