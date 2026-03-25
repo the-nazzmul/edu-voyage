@@ -33,7 +33,7 @@ const cols = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-edu-footer text-edu-navy">
+    <footer className="bg-edu-primary text-edu-navy">
       <div className="mx-auto max-w-6xl min-w-0 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="text-center sm:text-left">
@@ -42,11 +42,11 @@ export function SiteFooter() {
               className="mb-5 inline-flex items-center justify-center gap-2.5 sm:justify-start"
             >
               <Image
-                src="/evuvoyage.png"
+                src="/eduvoyage-logo-black.png"
                 alt="EduVoyage"
                 width={48}
                 height={48}
-                className="h-12 w-12 shrink-0 object-contain"
+                className="h-12 w-12 shrink-0 rounded-2xl object-contain"
               />
               <span className="text-lg font-bold tracking-tight text-edu-navy">
                 EduVoyage

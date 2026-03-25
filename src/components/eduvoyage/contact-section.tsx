@@ -4,7 +4,6 @@ import {
   LinkedInIcon,
   XIcon,
 } from "@/components/eduvoyage/social-icons";
-import Image from "next/image";
 
 export function ContactSection() {
   return (
@@ -16,14 +15,15 @@ export function ContactSection() {
         <h2 className="text-center text-2xl font-extrabold text-edu-navy sm:text-3xl md:text-4xl">
           Contact Us
         </h2>
-        <div className="mt-8 overflow-hidden rounded-3xl bg-gradient-to-br from-edu-panel to-edu-sky-soft p-5 shadow-xl ring-1 ring-edu-navy/10 sm:mt-10 sm:rounded-[2.5rem] sm:p-8 md:p-10 lg:p-12">
+        <div className="mt-8 overflow-hidden rounded-3xl bg-edu-primary p-5 shadow-xl ring-1 ring-edu-navy/10 sm:mt-10 sm:rounded-[2.5rem] sm:p-8 md:p-10 lg:p-12">
           <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="min-w-0">
               <h3 className="text-xl font-bold text-edu-navy sm:text-2xl">
                 Get In Touch
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-edu-muted">
-                Visit our office in Dhaka or reach out by phone or email. Tell
+                Visit us at Gulshan Empori Tower, Dhaka or reach out by phone or
+                email. Tell
                 us your goals and we&apos;ll help you plan your next
                 step—whether it&apos;s choosing a country, shortlisting
                 universities, or starting your visa paperwork.
@@ -44,7 +44,7 @@ export function ContactSection() {
                       <circle cx="12" cy="10" r="2.5" strokeWidth="1.6" />
                     </svg>
                   </span>
-                  Dhaka, Bangladesh
+                  Gulshan Empori Tower, Dhaka, Bangladesh
                 </li>
                 <li className="flex min-w-0 items-start gap-3">
                   <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-edu-navy text-white">
@@ -85,12 +85,15 @@ export function ContactSection() {
                 </li>
               </ul>
               <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-edu-navy/10">
-                <Image
-                  src="https://images.unsplash.com/photo-1626285861696-9f73bf068148?auto=format&fit=crop&w=1200&q=80"
-                  alt="Dhaka city"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                {/* Google embed: hl=en; q=lat,lng drops the pin */}
+                <iframe
+                  title="Map of Gulshan Empori Tower, Dhaka"
+                  aria-label="Interactive map with pin at Gulshan Empori Tower, Dhaka, Bangladesh"
+                  className="absolute inset-0 h-full w-full border-0"
+                  src="https://www.google.com/maps?q=23.795837%2C90.417891&hl=en&z=18&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
                 />
               </div>
             </div>

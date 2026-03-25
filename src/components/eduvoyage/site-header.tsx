@@ -18,11 +18,11 @@ function Logo() {
   return (
     <a href="#" className="flex items-center gap-2.5 text-edu-navy">
       <Image
-        src="/evuvoyage.png"
+        src="/eduvoyage-logo-black.png"
         alt="EduVoyage"
         width={40}
         height={40}
-        className="h-10 w-10 shrink-0 object-contain"
+        className="h-10 w-10 shrink-0 rounded-2xl object-contain"
         priority
       />
       <span className="min-w-0 truncate text-base font-bold tracking-tight sm:text-lg">
