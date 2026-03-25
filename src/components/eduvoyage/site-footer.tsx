@@ -105,7 +105,7 @@ export function SiteFooter() {
           ))}
           <div className="text-center text-sm font-semibold leading-relaxed sm:text-left">
             <p>Dhaka, Bangladesh</p>
-            <p className="mt-4">+880 1712-345678</p>
+            <p className="mt-4">+880 1700-000000</p>
             <p className="mt-4">hello@eduvoyage.com</p>
           </div>
         </div>
